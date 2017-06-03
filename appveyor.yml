@@ -8,14 +8,15 @@ assembly_info:
 
 cache:
   - packages
-  - paket-files
-  - paket.lock
+  - paket-files  
 
 before_build:
   - ps: gitversion /l console /output buildserver /updateAssemblyInfo
 
 build_script:
+  - dir packages
   - cmd: .\build.cmd Publish
+  - dir packages
 
 test: off
 
